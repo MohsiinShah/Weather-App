@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.skydoves:powermenu:2.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e0c67be30af1815f863344b74ee2d9e2/transformed/jetified-powermenu-2.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e0c67be30af1815f863344b74ee2d9e2/transformed/jetified-powermenu-2.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e0c67be30af1815f863344b74ee2d9e2/transformed/jetified-powermenu-2.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.skydoves/powermenu/2.2.0/e889f4fcb65fabda3fdff0c28692394b7c2226f2/powermenu-2.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.skydoves/powermenu/2.2.0/8d09cefbdf54ae4f0667d9760258ea897889f49c/powermenu-2.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

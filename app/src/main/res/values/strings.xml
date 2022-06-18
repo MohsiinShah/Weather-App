@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Weather-forecast</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="add_to_favourites">Add to favourites</string>
+
+    <string-array name="steps">
+
+        <item>Symbol</item>
+        <item>Build Position</item>
+        <item>Order Ticket</item>
+        <item>Review</item>
+
+    </string-array>
+    <string name="location_access_rationale">The weather app needs to access your current location to show your current weather forecast</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+</resources>

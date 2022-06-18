@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.10"
+    ext.hilt_android_version = "2.28-alpha"
+    ext.google_services = "4.3.10"
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_android_version"
+        classpath "com.google.gms:google-services:$google_services"
+
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+ext {
+    dagger2_version = "2.23"
+    hilt_version = "2.40.5"
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

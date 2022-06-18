@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="favAdapter"
+            type="com.openweathermap.forecast.ui.search.FavouritesAdapter" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="false">
+
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:hint="@string/search"
+            android:textSize="12sp"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:background="@drawable/rounded_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/selectedCityLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintTop_toBottomOf="@id/searchEt"
+            app:layout_constraintStart_toStartOf="@id/searchEt"
+            app:layout_constraintEnd_toEndOf="@id/searchEt">
+
+            <TextView
+                android:id="@+id/selectedCityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/addToFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:text="@string/add_to_favourites"
+                app:layout_constraintStart_toEndOf="@id/selectedCityName"
+                app:layout_constraintTop_toTopOf="@id/selectedCityName"
+                app:layout_constraintBottom_toBottomOf="@id/selectedCityName"
+                android:layout_marginStart="20dp"
+                app:drawableLeftCompat="@drawable/fav_nonfilled" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/favCitiesLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintTop_toBottomOf="@id/selectedCityLayout"
+            app:layout_constraintStart_toStartOf="@id/selectedCityLayout"
+            app:layout_constraintEnd_toEndOf="@id/selectedCityLayout">
+
+            <TextView
+                android:id="@+id/favCitiesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favourite Cities"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favouritesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                app:adapter="@{favAdapter}"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
