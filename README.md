@@ -1,9 +1,6 @@
 # Weather-App
 This project demonstrates the implementation of OpenWeatherMap api for real-time weather data.
 
-# WeatherForecast
-This project demonstrates the implementation of OpenWeatherMap api.
-
 ## Tech Stack <br>
 
 ● Kotlin based, Coroutines + Flow<br>
