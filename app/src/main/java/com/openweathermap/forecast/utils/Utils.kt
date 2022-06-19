@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.blue
 import android.graphics.Typeface
 import android.location.Address
 import android.location.Geocoder
@@ -123,5 +124,25 @@ internal object Utils {
         notificationManager.createNotificationChannel(notificationChannel)
         chanelId = notificationChannel.id
         return chanelId
+    }
+
+    fun getPowerMenu(context: Context, onMenuItemClickListener: OnMenuItemClickListener<PowerMenuItem>): PowerMenu{
+
+        val powerMenu = PowerMenu.Builder(context)
+            .addItem(PowerMenuItem("Celsius", true)) // add an item.
+            .addItem(PowerMenuItem("Fahrenheit", false)) // aad an item list.
+            .setAnimation(MenuAnimation.SHOWUP_TOP_RIGHT)
+            .setMenuRadius(10f)
+            .setMenuShadow(10f)
+            .setTextColor(ContextCompat.getColor(context, R.color.white))
+            .setTextGravity(Gravity.CENTER)
+            .setTextTypeface(Typeface.create("sans-serif-medium", Typeface.BOLD))
+            .setSelectedTextColor(Color.WHITE)
+            .setMenuColor(ContextCompat.getColor(context, R.color.black))
+            .setSelectedMenuColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
+            .setOnMenuItemClickListener(onMenuItemClickListener)
+            .build()
+
+        return powerMenu
     }
 }

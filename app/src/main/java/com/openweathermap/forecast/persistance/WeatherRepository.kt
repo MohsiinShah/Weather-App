@@ -14,7 +14,6 @@ class WeatherRepository @Inject constructor(
     private val sharedPrefs: MyAppPreferences
 ) {
     private val restaurantDao = db.restaurantDao()
-    private val currentCity = sharedPrefs.getSelectedCity()
 
     fun getWeatherData() = networkBoundResource(
         query = {
@@ -27,7 +26,7 @@ class WeatherRepository @Inject constructor(
                 sharedPrefs.getSelectedCity()?.city?.lon?.toString() ?: "0.1276",
                 "minutely,hourly",
                 UrlUtils.API_ACCESS_KEY,
-                "metric"
+                if (sharedPrefs.getIfCelsius()) "metric" else "imperial"
             )
         },
         saveFetchResult = { restaurants ->

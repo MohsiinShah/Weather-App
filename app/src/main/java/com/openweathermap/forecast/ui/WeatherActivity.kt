@@ -29,7 +29,11 @@ import com.openweathermap.forecast.models.City
 import com.openweathermap.forecast.models.Forecast
 import com.openweathermap.forecast.persistance.Favourites
 import com.openweathermap.forecast.utils.*
+import com.skydoves.powermenu.OnMenuItemClickListener
+import com.skydoves.powermenu.PowerMenu
+import com.skydoves.powermenu.PowerMenuItem
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.notify
 import javax.inject.Inject
 
 
@@ -51,6 +55,7 @@ class WeatherActivity : AppCompatActivity() {
 
     private var forecasts = mutableListOf<Forecast>()
 
+    private lateinit var powerMenu: PowerMenu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +85,11 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+
+        powerMenu = Utils.getPowerMenu(this, onMenuItemClickListener)
+
+        powerMenu.selectedPosition = if(sharedPrefs.getIfCelsius()) 0 else 1
+
         LocalBroadcastManager.getInstance(this).registerReceiver(
             favCitySelectedReceiver, IntentFilter(
                 Constants.INTENTS.FAV_SELECTED
@@ -135,6 +145,7 @@ class WeatherActivity : AppCompatActivity() {
                     )
                     forecasts.add(forecast)
                 }
+                adapter.notifyDataSetChanged()
                 viewBinding.contentLayout.visibility = View.VISIBLE
             }
         }
@@ -173,7 +184,8 @@ class WeatherActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_settings -> {
-                finish()
+                if(this::powerMenu.isInitialized)
+                    powerMenu.showAsDropDown(findViewById(R.id.action_settings))
             }
             R.id.search -> {
                 ActivityStackManager.instance.startSearchActivity(this)
@@ -226,4 +238,20 @@ class WeatherActivity : AppCompatActivity() {
             )
         }
     }
+
+    private val onMenuItemClickListener: OnMenuItemClickListener<PowerMenuItem> =
+        OnMenuItemClickListener<PowerMenuItem> { position, item ->
+            when(position){
+                0 ->{
+                    sharedPrefs.setIfCelsius(true)
+                    viewModel.refresh()
+                }
+                1 ->{
+                    sharedPrefs.setIfCelsius(false)
+                    viewModel.refresh()
+                }
+            }
+            powerMenu.selectedPosition = position
+            powerMenu.dismiss()
+        }
 }

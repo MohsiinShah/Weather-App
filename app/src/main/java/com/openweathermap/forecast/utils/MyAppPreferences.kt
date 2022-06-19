@@ -40,4 +40,20 @@ class MyAppPreferences(private var mSharedPreferences: SharedPreferences) {
             mSharedPreferences.getString(Constants.PreferenceKeys.CURRENT_TEMPERATURE, null)
         return gson.fromJson(json, Current::class.java)
     }
+
+
+    fun setIfCelsius(flag: Boolean) {
+        mSharedPreferences
+            .edit()
+            .putBoolean(Constants.PreferenceKeys.IS_CELSIUS, flag)
+            .apply()
+    }
+
+    fun getIfCelsius(): Boolean {
+        return mSharedPreferences
+            .getBoolean(
+                Constants.PreferenceKeys.IS_CELSIUS,
+                true
+            )
+    }
 }

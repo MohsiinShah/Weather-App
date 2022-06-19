@@ -9,7 +9,7 @@ object Constants {
     internal object PreferenceKeys{
         const val SELECTED_CITY = "selected_city"
         const val CURRENT_TEMPERATURE = "current_temp"
-
+        const val IS_CELSIUS = "is_celsius"
     }
 
     internal object INTENTS{

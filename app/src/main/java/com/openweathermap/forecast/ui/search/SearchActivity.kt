@@ -18,6 +18,9 @@ import com.openweathermap.forecast.persistance.Favourites
 import com.openweathermap.forecast.utils.ActivityStackManager
 import com.openweathermap.forecast.utils.MyAppPreferences
 import com.openweathermap.forecast.utils.Utils
+import com.skydoves.powermenu.OnMenuItemClickListener
+import com.skydoves.powermenu.PowerMenu
+import com.skydoves.powermenu.PowerMenuItem
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,6 +39,7 @@ class SearchActivity : AppCompatActivity(), FavouriteCityNavigator {
     private var favouriteCities = mutableListOf<Favourites>()
 
     private var selectedCity: City? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

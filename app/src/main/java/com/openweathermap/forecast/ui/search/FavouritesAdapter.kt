@@ -6,11 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.openweathermap.forecast.databinding.FavCityItemBinding
-import com.openweathermap.forecast.databinding.ForecastItemLayoutBinding
-import com.openweathermap.forecast.models.City
-import com.openweathermap.forecast.models.Forecast
 import com.openweathermap.forecast.persistance.Favourites
 import com.openweathermap.forecast.utils.DataDiffUtil
 
@@ -35,9 +31,9 @@ class FavouritesAdapter(private val context: Context, private var dataList: Muta
 
     fun addData(favs: List<Favourites>){
         val diffResult: DiffUtil.DiffResult = DiffUtil.calculateDiff(DataDiffUtil(this.dataList, favs))
-        diffResult.dispatchUpdatesTo(this)
         dataList.clear()
         dataList.addAll(favs)
+        diffResult.dispatchUpdatesTo(this)
     }
 
     inner class ViewHolder(private var itemRowBinding: FavCityItemBinding) :

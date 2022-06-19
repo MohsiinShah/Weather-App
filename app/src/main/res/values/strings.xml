@@ -15,5 +15,6 @@
     <string name="location_access_rationale">The weather app needs to access your current location to show your current weather forecast</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="favourite_cities">Favourite Cities</string>
 
 </resources>

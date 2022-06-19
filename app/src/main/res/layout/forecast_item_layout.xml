@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
     <data>
     <variable
         name="item"
@@ -26,6 +27,7 @@
             android:id="@+id/iconForecast"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            bind:image="@{item.icon}"
             android:background="@drawable/dummy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,7 @@
             android:id="@+id/max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{`H: ` + item.max}"
             android:textColor="@android:color/holo_green_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:text="@{`L: ` + item.min}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/max" />
