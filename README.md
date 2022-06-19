@@ -5,7 +5,6 @@ This project demonstrates the implementation of OpenWeatherMap api for real-time
 
 ● Kotlin based, Coroutines + Flow<br>
 ● Mvvm architecture <br>
-● Coroutines <br>
 ● Jetpack: Lifecycle, ViewModel, Data Binding, Room Persistence, Live Data <br>
 ● Hilt for dependency injection.<br>
 ● Retrofit<br>
