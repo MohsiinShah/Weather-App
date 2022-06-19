@@ -8,7 +8,6 @@ This project demonstrates the implementation of OpenWeatherMap api for real-time
 ● Coroutines <br>
 ● Jetpack: Lifecycle, ViewModel, Data Binding, Room Persistence, Live Data <br>
 ● Hilt for dependency injection.<br>
-● Data Binding <br>
 ● Retrofit<br>
 
 ## Features <br>
