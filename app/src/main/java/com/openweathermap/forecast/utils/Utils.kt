@@ -78,30 +78,34 @@ internal object Utils {
     }
 
     fun schedulePushNotifications(context: Context) {
-        val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
-         val alarmPendingIntent by lazy {
-            val intent = Intent(context, AlarmReceiver::class.java)
-            PendingIntent.getBroadcast(context, 0, intent, 0)
-        }
-
-        val calendar = GregorianCalendar.getInstance().apply {
-
-            if (get(Calendar.HOUR_OF_DAY) >= Constants.HOURS_TO_PUSH_NOTIFICATION) {
-                add(Calendar.DAY_OF_MONTH, 1)
+        try {
+            val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+            val alarmPendingIntent by lazy {
+                val intent = Intent(context, AlarmReceiver::class.java)
+                PendingIntent.getBroadcast(context, 0, intent, 0)
             }
 
-            set(Calendar.HOUR_OF_DAY, Constants.HOURS_TO_PUSH_NOTIFICATION)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
+            val calendar = GregorianCalendar.getInstance().apply {
 
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            alarmPendingIntent
-        )
+                if (get(Calendar.HOUR_OF_DAY) >= Constants.HOURS_TO_PUSH_NOTIFICATION) {
+                    add(Calendar.DAY_OF_MONTH, 1)
+                }
+
+                set(Calendar.HOUR_OF_DAY, Constants.HOURS_TO_PUSH_NOTIFICATION)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                alarmPendingIntent
+            )
+        }catch (e: Exception){
+
+        }
     }
 
     /**
